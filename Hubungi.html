@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kintar - Belajar Inklusif Interaktif</title>
+  <link rel="stylesheet" href="Kintar.css" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <style>
+    /* ===== Container umum (laptop/desktop) ===== */
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 30px 40px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .container h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #2c3e50;
+      font-size: 1.8rem;
+    }
+
+    /* ===== Form styling ===== */
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #34495e;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      padding: 12px 15px;
+      margin-bottom: 18px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      border-color: #3498db;
+      outline: none;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    /* Tombol kirim */
+    input[type="submit"] {
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    input[type="submit"]:hover {
+      background: #2980b9;
+      transform: translateY(-2px);
+    }
+
+    .feedback {
+      margin-top: 15px;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    /* ===== Responsive untuk Handphone ===== */
+    @media (max-width: 600px) {
+      .container {
+        margin: 20px 10px;
+        padding: 20px;
+      }
+
+      .container h2 {
+        font-size: 1.4rem;
+      }
+
+      label {
+        font-size: 0.9rem;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      textarea {
+        font-size: 0.9rem;
+        padding: 10px 12px;
+      }
+
+      input[type="submit"] {
+        font-size: 0.95rem;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <!--Navigation-->
+   <nav>
+        <!-- Logo di kiri -->
+        <div class="nav-logo">
+            <img src="Kintar3.jpeg" alt="Logo Kintar" />
+        </div>
+
+        <!-- Tombol hamburger -->
+        <div class="menu-toggle" id="menuToggle">☰</div>
+
+
+        <!-- Overlay -->
+        <div class="overlay" id="overlay"></div>
+
+        <!-- Navigasi -->
+        <ul class="nav-list-container" id="navLinks">
+            <li class="nav-list"><a href="index.html">Home</a></li>
+            <li class="nav-list"><a href="Tentang.html">Tentang Website</a></li>
+            <li class="nav-list"><a href="Hubungi.html">Hubungi Saya</a></li>
+            <li class="nav-list"><a href="produk.html">Produk</a></li>
+            <li class="nav-list"><a href="penggunaan.html">Pengunaan</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+      <h2>Hubungi Saya</h2>
+      <form id="contactForm">
+        <label for="name">Nama</label>
+        <input type="text" id="name" name="name" placeholder="Nama Anda.." required />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Email Anda.." required />
+
+        <label for="message">Pesan</label>
+        <textarea id="message" name="message" placeholder="Tulis pesan.." rows="5" required></textarea>
+
+        <input type="submit" value="Kirim Pesan" />
+        <p id="formFeedback" class="feedback"></p>
+      </form>
+    </div>
+    <!-- Footer -->
+    <footer class="footer">
+      <p>© 2025 Kintar - Kartu Pintar. Dibuat oleh Taufik Hidayat - Mahasiswa UNTIRTA</p>
+      <div class="sosmed">
+        <a href="https://facebook.com/taufik.hidayat.416718" target="_blank"><img
+            src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"></a>
+        <a href="https://instagram.com/kiposis_official" target="_blank"><img
+            src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
+        <a href="https://wa.me/082258038059" target="_blank"><img
+            src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp"></a>
+        <a href="mailto:taufikkipo3@gmail.com"><img src="https://cdn-icons-png.flaticon.com/512/732/732200.png"
+            alt="Gmail"></a>
+      </div>
+    </footer>
+  </div>
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      document.getElementById("formFeedback").textContent = "Terima kasih! Pesan Anda terkirim 😊";
+      document.getElementById("formFeedback").style.color = "#16a34a";
+      this.reset();
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kintar - Belajar Inklusif Interaktif</title>
+    <link rel="stylesheet" href="Kintar.css" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        /* Modern Info Section */
+        .info {
+            padding: 1rem 1rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+            z-index: 1;
+        }
+
+        .info-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .info h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #2d3748;
+            position: relative;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .info h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            transform: translateX(-50%);
+            border-radius: 2px;
+            animation: expandWidth 1s ease 0.5s forwards;
+            width: 0;
+        }
+
+        .info p {
+            font-size: 1.1rem;
+            color: #4a5568;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.3s forwards;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .feature-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .feature-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: rotateY(360deg) scale(1.1);
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #2d3748;
+            transition: color 0.3s ease;
+        }
+
+        .feature-card:hover h3 {
+            color: #4ecdc4;
+        }
+
+        .feature-card p {
+            color: #4a5568;
+            line-height: 1.6;
+            transition: color 0.3s ease;
+        }
+
+        .feature-card:hover p {
+            color: #2d3748;
+        }
+
+        /* Hero Section Enhancements */
+        .hero {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(78, 205, 196, 0.1), rgba(255, 107, 107, 0.1));
+            z-index: 1;
+            animation: gradientShift 8s ease-in-out infinite;
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            animation: pulseGlow 2s ease-in-out infinite alternate;
+        }
+
+        .hero-text p {
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.5s forwards;
+        }
+
+        .cta {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta:hover::before {
+            left: 100%;
+        }
+
+        .cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Interactive Statistics Section */
+        .stats-section {
+            padding: 4rem 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            padding: 2rem;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #4ecdc4;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Interactive Demo Section */
+        .demo-section {
+            padding: 4rem 1rem;
+            background: #f8f9fa;
+            text-align: center;
+        }
+
+        .demo-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .demo-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .demo-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        }
+
+        .nfc-simulator {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nfc-simulator:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 50px rgba(78, 205, 196, 0.5);
+        }
+
+        .nfc-simulator::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80%;
+            height: 80%;
+            border: 3px solid rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .demo-text {
+            font-size: 1.2rem;
+            color: #4a5568;
+            margin-bottom: 2rem;
+        }
+
+        .demo-result {
+            padding: 1rem;
+            background: #e8f5e8;
+            border-radius: 10px;
+            color: #2d5016;
+            font-weight: bold;
+            margin-top: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .demo-result.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes expandWidth {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 80px;
+            }
+        }
+
+        @keyframes pulseGlow {
+            from {
+                text-shadow: 0 0 20px rgba(78, 205, 196, 0.5);
+            }
+
+            to {
+                text-shadow: 0 0 40px rgba(78, 205, 196, 0.8);
+            }
+        }
+
+        @keyframes gradientShift {
+
+            0%,
+            100% {
+                background: linear-gradient(45deg, rgba(78, 205, 196, 0.1), rgba(255, 107, 107, 0.1));
+            }
+
+            50% {
+                background: linear-gradient(45deg, rgba(255, 107, 107, 0.1), rgba(78, 205, 196, 0.1));
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.1);
+                opacity: 0.7;
+            }
+        }
+
+        @keyframes countUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .info h2 {
+                font-size: 2rem;
+            }
+
+            .nfc-simulator {
+                width: 150px;
+                height: 150px;
+                font-size: 3rem;
+            }
+
+            .feature-card {
+                padding: 1.5rem;
+            }
+        }
+
+        .google-review-section {
+            padding: 4rem 1rem;
+            background: #fefefe;
+            text-align: center;
+        }
+
+        .google-review-section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #2d3748;
+        }
+
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .review-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            text-align: left;
+            position: relative;
+        }
+
+        .review-top {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .stars {
+            color: #fbbc04;
+            font-size: 1rem;
+        }
+
+        .review-text {
+            font-size: 1rem;
+            color: #4a5568;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .review-time {
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        .note-review {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <!-- Logo di kiri -->
+        <div class="nav-logo">
+            <img src="Kintar3.jpeg" alt="Logo Kintar" />
+        </div>
+
+        <!-- Tombol hamburger -->
+        <div class="menu-toggle" id="menuToggle">☰</div>
+
+
+        <!-- Overlay -->
+        <div class="overlay" id="overlay"></div>
+
+        <!-- Navigasi -->
+        <ul class="nav-list-container" id="navLinks">
+            <li class="nav-list"><a href="index.html">Home</a></li>
+            <li class="nav-list"><a href="Tentang.html">Tentang Website</a></li>
+            <li class="nav-list"><a href="Hubungi.html">Hubungi Saya</a></li>
+            <li class="nav-list"><a href="produk.html">Produk</a></li>
+            <li class="nav-list"><a href="penggunaan.html">Pengunaan</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="Home">
+        <div class="hero-text">
+            <h1>Kintar</h1>
+            <p>
+                Media pembelajaran interaktif berbasis NFC untuk anak disabilitas dan reguler.
+                Cukup tempelkan kartu Kintar ke ponsel dan website inklusif akan terbuka otomatis!
+            </p>
+            <a href="#about" class="cta">Pelajari Selengkapnya</a>
+        </div>
+        <div class="hero-video">
+            <video autoplay muted loop playsinline>
+                <source src="Kintar2.mp4" type="video/mp4" />
+                Browser kamu tidak mendukung video.
+            </video>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info" id="about">
+        <div class="info-container">
+            <h2>Apa Itu Kintar?</h2>
+            <p>Kintar adalah kartu NFC pintar yang ketika ditempelkan ke handphone akan membuka halaman website berisi
+                penjelasan hewan dengan gambar dan suara, game edukatif, serta aktivitas interaktif untuk anak-anak.</p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Penjelasan Visual & Audio</h3>
+                    <p>Pembelajaran multisensor dengan gambar dan suara yang membantu anak memahami dengan lebih baik
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎮</div>
+                    <h3>Game Edukatif Interaktif</h3>
+                    <p>Permainan yang dirancang khusus untuk meningkatkan daya ingat dan pemahaman anak</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Aktivitas Bersama</h3>
+                    <p>Kegiatan yang dapat dilakukan bersama guru atau orang tua untuk bonding yang lebih kuat</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 Kintar - Kartu Pintar. Dibuat oleh Taufik Hidayat - Mahasiswa UNTIRTA</p>
+        <div class="sosmed">
+            <a href="https://facebook.com/taufik.hidayat.416718" target="_blank"><img
+                    src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"></a>
+            <a href="https://instagram.com/kiposis_official" target="_blank"><img
+                    src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
+            <a href="https://wa.me/082258038059" target="_blank"><img
+                    src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp"></a>
+            <a href="mailto:taufikkipo3@gmail.com"><img src="https://cdn-icons-png.flaticon.com/512/732/732200.png"
+                    alt="Gmail"></a>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const overlay = document.getElementById('overlay');
+        const navItems = document.querySelectorAll('.nav-list a');
+
+        // Toggle menu (hamburger)
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        // Tutup menu saat klik overlay
+        overlay.addEventListener('click', () => {
+            closeMenu();
+        });
+
+        // Tutup menu saat klik link
+        navItems.forEach(link => {
+            link.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+
+                // Jika link menuju ke bagian dalam halaman (anchor), scroll
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+
+                // Tutup menu mobile
+                closeMenu();
+
+                // Highlight aktif menu
+                document.querySelectorAll('.nav-list').forEach(item => item.classList.remove('active'));
+                this.parentElement.classList.add('active');
+            });
+        });
+
+        // Tutup menu jika tekan tombol Escape
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeMenu();
+            }
+        });
+
+        // Fungsi tutup menu
+        function closeMenu() {
+            navLinks.classList.remove('active');
+            overlay.classList.remove('active');
+            menuToggle.classList.remove('active');
+        }
+
+        // Efek Ripple (jika dipakai di tombol)
+        document.querySelectorAll('.ripple').forEach(button => {
+            button.addEventListener('click', function (e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+
+                ripple.style.width = ripple.style.height = `${size}px`;
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                ripple.classList.add('ripple-effect');
+
+                this.appendChild(ripple);
+
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+    </script>
+
+</body>
+
+</html>

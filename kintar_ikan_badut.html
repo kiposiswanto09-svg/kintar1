@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kintar - Ikan Badut </title>
+  <link rel="stylesheet" href="Kintar_harimau.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+  <div class="utama">
+    <!-- Navigasi -->
+    <header class="nav-container">
+      <div class="nav-logo">
+        <i id="nav-on" class="fa fa-bars" aria-label="Buka Menu"></i>
+      </div>
+    </header>
+
+     <nav id="nav-menu" class="close" aria-label="Menu Navigasi">
+      <div class="nav-menu-action">
+        <h4>Kintar</h4>
+          <i id="nav-close" class="fa fa-xmark" aria-label="Tutup Menu"></i>
+      </div>
+        <ul class="nav-list-container">
+          <li class="nav-list"><i class="fa fa-house"></i><a href="Kintar.html">Home</a></li>
+          <li class="nav-list"><i class="fa-regular fa-circle-dot"></i><a href="Tentang_Saya.html">Tentang Saya</a></li>
+          <li class="nav-list"><i class="fa fa-code-branch"></i><a href="Kintar_Hubungi_Saya.html">Hubungi Saya</a></li>
+        </ul>
+    </nav>
+
+    <!-- Konten -->
+    <main class="content">
+      <section class="Judul">
+        <h1>Aku Ikan Badut</h1>
+      </section>
+
+      <div class="foto">
+        <img src="Ikan Badut.jpeg" alt="Seekor ikan badut berwarna orange dengan garis putih sedang berenang di luar terumbu karang" />
+          <p class="source">
+          Sumber gambar:
+          <a href="https://pin.it/6wvqYfngs" target="_blank">https://pin.it/6wvqYfngs</a>
+          </p>
+      </div>
+    
+      <section class="info-box">
+        <h3>🎨 Ciri-ciriku?</h3>
+        <p>"Tubuhku mungil, warnaku mencolok: oranye, putih, dan sedikit hitam. Aku cantik dan unik! Orang-orang mudah mengenaliku karena warna tubuhku seperti sedang pakai kostum."</p>
+        <audio control>
+          <source src="" type="audio/mpeg"/>
+        </audio>
+      </section>
+
+      <section class="info-box">
+        <h3>🍽️ Aku makan apa?</h3>
+        <p>"Aku suka makan plankton kecil, alga, dan sisa-sisa makanan kecil di laut. Aku sangat rajin menjaga kebersihan rumahku juga, lho!"</p>
+        <audio control>
+          <source src="" type="audio/mpeg"/>
+        </audio>
+      </section>
+
+      <section class="info-box">
+        <h3>🌿 Aku tinggal di mana?</h3>
+        <p>"Aku tinggal di laut, tepatnya di dalam karang anemon. Itu rumahku yang lembut namun penuh perlindungan. Anemon itu punya sengat, tapi aku tidak sakit karena kami bersahabat!"</p>
+        <audio>
+          <source src="" type="audio/mpeg"/>
+        </audio>
+      </section>
+
+      <section class="info-box">
+        <h3>📚 Aku termasuk hewan apa?</h3>
+        <p>"Aku termasuk dalam hewan omnivora, karena aku bisa makan tumbuhan dan hewan kecil."</p>
+        <audio>
+          <source src="" type="audio/mpeg"/>
+        </audio>
+      </section>
+
+    <!-- Aktivitas -->
+    <section class="aktivitas">
+  <h2>Di mana rumah ikan badut?</h2>
+  <button onclick="jawaban('salah', 'feedback-rumah')">A. di atas pohon</button>
+  <button onclick="jawaban('benar', 'feedback-rumah')">B. di dalam laut, bersama anemon</button>
+  <button onclick="jawaban('salah', 'feedback-rumah')">C. di hutan</button>
+  <p id="feedback-rumah" class="feedback"></p>
+</section>
+
+<section class="tempat">
+  <h2>Warna tubuh ikan badut?</h2>
+  <button onclick="jawaban('benar', 'feedback-warna')">A. Orange, Putih, dan hitam</button>
+  <button onclick="jawaban('salah', 'feedback-warna')">B. Unggu dan merah</button>
+  <button onclick="jawaban('salah', 'feedback-warna')">C. Cokelat dan hijau</button>
+  <p id="feedback-warna" class="feedback"></p>
+</section>
+
+<section class="aktivitas">
+  <h2>Ikan badut suka makan apa?</h2>
+  <button onclick="jawaban('benar', 'feedback-makan')">A. Plankton dan rumput laut</button>
+  <button onclick="jawaban('salah', 'feedback-makan')">B. Kue dan es krim</button>
+  <button onclick="jawaban('salah', 'feedback-makan')">C. Nasi goreng</button>
+  <p id="feedback-makan" class="feedback"></p>
+</section>
+
+<section class="aktivitas">
+  <h2>Ikan badut termasuk hewan?</h2>
+  <button onclick="jawaban('salah', 'feedback-kategori')">A. Hanya makan nasi</button>
+  <button onclick="jawaban('salah', 'feedback-kategori')">B. Tidak pernah makan</button>
+  <button onclick="jawaban('benar', 'feedback-kategori')">C. Omnivora (makan tumbuhan & Hewan)</button>
+  <p id="feedback-kategori" class="feedback"></p>
+</section>
+
+<section class="aktivitas">
+  <h2>Ikan badut tidak sakit saat tinggal di anemon karena ..?</h2>
+  <button onclick="jawaban('salah', 'feedback-anemon')">A. Ikan badut terbang ke luar</button>
+  <button onclick="jawaban('salah', 'feedback-anemon')">B. Ikan badut punya jaket tebal</button>
+  <button onclick="jawaban('benar', 'feedback-anemon')">C. Mereka bersahabat</button>
+  <p id="feedback-anemon" class="feedback"></p>
+</section>
+    </main>
+<!-- Audio -->
+  <audio id="suara-benar" src="Hebat! Kamu Benar.mp3"></audio>
+  <audio id="suara-salah" src="Kurang tepat, yuk coba lagi!.mp3"></audio>
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 Kintar. Dibuat oleh Taufik Hidayat - Mahasiswa UNTIRTA</p>
+    <div class="sosmed">
+      <a href="https://facebook.com/taufik.hidayat.416718" target="_blank"><img src="FB.png" alt="Facebook"></a>
+      <a href="https://instagram.com/kiposis_official" target="_blank"><img src="IG.png" alt="Instagram"></a>
+      <a href="https://wa.me/082258038059" target="_blank"><img src="WA.png" alt="WhatsApp"></a>
+      <a href="mailto:taufikkipo3@gmail.com"><img src="Gmail.png" alt="Gmail"></a>
+    </div>
+  </div>
+  </footer>
+<!-- Script Navigasi -->
+<script>
+  const navOnBtn = document.getElementById("nav-on");
+  const navCloseBtn = document.getElementById("nav-close");
+  const navMenu = document.getElementById("nav-menu");
+
+  navOnBtn.addEventListener("click", () => {
+    navMenu.classList.remove("close");
+    navMenu.classList.add("open");
+    document.body.classList.add("nav-open");
+  });
+
+  navCloseBtn.addEventListener("click", () => {
+    navMenu.classList.remove("open");
+    navMenu.classList.add("close");
+    document.body.classList.remove("nav-open");
+  });
+</script>
+
+<!-- Script Soal -->
+<script>
+  function jawaban(status, idTarget = 'feedback-makanan') {
+    const feedback = document.getElementById(idTarget);
+    const suaraBenar = document.getElementById("suara-benar");
+    const suaraSalah = document.getElementById("suara-salah");
+
+    if (status === "benar") {
+      feedback.textContent = "Hebat! Kamu benar!";
+      feedback.style.color = "#16a34a";
+      suaraBenar.currentTime = 0;
+      suaraBenar.play();
+    } else {
+      feedback.textContent = "Kurang tepat, yuk coba lagi!";
+      feedback.style.color = "#dc2626";
+      suaraSalah.currentTime = 0;
+      suaraSalah.play();
+    }
+  }
+
+  function cekJawaban(pilihan) {
+    const feedback = document.getElementById("feedback-kuis");
+    feedback.textContent = pilihan === 'C' ? "Benar! Ada 3 daun." : "Salah, coba lagi ya!";
+    feedback.style.color = pilihan === 'C' ? "#16a34a" : "#dc2626";
+  }
+</script>    
+ </body>
+</html>

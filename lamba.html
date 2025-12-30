@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kintar - Lumba (Multi-Halaman)</title>
+  <!-- Tetap pakai CSS utama Anda -->
+  <link rel="stylesheet" href="Kintar_harimau.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- CSS kecil khusus pager; aman kalau tidak ada di file utama -->
+  <style>
+    /* Background lembut dengan warna oranye senada navigasi */
+body {
+  background: linear-gradient(to bottom, #fff7e5, #ffe4cc);
+  font-family: "Comic Sans MS", Arial, sans-serif;
+}
+
+/* Kotak halaman biar jelas */
+.pager-shell {
+  background: #ffffffee;
+  border-radius: 16px;
+  padding: 1rem;
+  margin: 1rem auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Judul besar, kontras, ramah anak */
+.Judul h1, h2 {
+  color: #f97316;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+/* Tombol lebih besar dan berwarna cerah */
+.arrow-btn, .aktivitas button {
+  background-color: #f97316;
+  color: white;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  padding: 0.8rem 1.2rem;
+  border: none;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.arrow-btn:hover, .aktivitas button:hover {
+  background-color: #ea580c;
+  transform: scale(1.05);
+}
+
+/* Indikator stepper lebih besar */
+.dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffd6a5;
+}
+.dot.active {
+  background: #f97316;
+  transform: scale(1.2);
+}
+    :root { --accent:#0ea5e9; --ok:#16a34a; --bad:#dc2626; }
+    /* Layout multi-halaman */
+    .pager-shell { max-width: 960px; margin: 0 auto; padding: 1rem; }
+    .page { display: none; animation: fade .25s ease; }
+    .page.active { display: block; }
+    @keyframes fade { from{opacity:0; transform: translateY(4px);} to{opacity:1; transform: none;} }
+
+    /* Kontrol panah */
+    .nav-arrows { display:flex; align-items:center; justify-content:space-between; gap:.5rem; margin-top:1rem; }
+    .arrow-btn { display:inline-flex; align-items:center; gap:.5rem; border:none; border-radius:999px; padding:.6rem 1rem; font-size:1rem; cursor:pointer; box-shadow:0 4px 12px rgba(0,0,0,.08); background:white; }
+    .arrow-btn[disabled]{ opacity:.5; cursor:not-allowed; }
+    .arrow-btn .icon { font-size:1.125rem; }
+
+    /* Indikator halaman */
+    .stepper { display:flex; justify-content:center; gap:.5rem; margin:.75rem 0 0; }
+    .dot { width:10px; height:10px; border-radius:50%; background:#e5e7eb; }
+    .dot.active { background:var(--accent); }
+
+    .Judul h1 { margin: .25rem 0 .5rem; }
+    .foto img{ max-width:100%; height:auto; border-radius:1rem; }
+    .info-box { background:#f8fafc; border-radius:1rem; padding:1rem; margin:.75rem 0; box-shadow:0 2px 10px rgba(0,0,0,.05); }
+    .aktivitas button{ margin:.25rem .25rem .5rem 0; }
+    .feedback{ font-weight:600; }
+
+    /* Footer sticky feel */
+    .footer { margin-top:2rem; padding:1rem 0; border-top:1px solid #e5e7eb; text-align:center; }
+
+    /* Aksesibilitas fokus */
+    .arrow-btn:focus, a:focus, button:focus { outline: 3px solid var(--accent); outline-offset:2px; }
+  </style>
+</head>
+<body>
+  <div class="utama pager-shell">
+    <!-- Navigasi atas -->
+    <header class="nav-container" aria-label="Navigasi Atas">
+      <div class="nav-logo">
+        <i id="nav-on" class="fa fa-bars" aria-label="Buka Menu"></i>
+      </div>
+    </header>
+
+    <nav id="nav-menu" class="close" aria-label="Menu Navigasi">
+      <div class="nav-menu-action">
+        <h4>Kintar</h4>
+        <i id="nav-close" class="fa fa-xmark" aria-label="Tutup Menu"></i>
+      </div>
+      <ul class="nav-list-container">
+        <li class="nav-list"><i class="fa fa-house"></i><a href="Kintar.html">Home</a></li>
+        <li class="nav-list"><i class="fa-regular fa-circle-dot"></i><a href="Tentang_Saya.html">Tentang Saya</a></li>
+        <li class="nav-list"><i class="fa fa-code-branch"></i><a href="Kintar_Hubungi_Saya.html">Hubungi Saya</a></li>
+      </ul>
+    </nav>
+
+    <!-- ===================== HALAMAN 1: Nama + Foto + Suara ===================== -->
+    <main id="page-1" class="page active" data-title="Lumba - Perkenalan" aria-labelledby="judul-1">
+      <section class="Judul">
+        <h1 id="judul-1">Aku Lumba</h1>
+      </section>
+
+      <div class="foto" aria-label="Foto Lumba-lumba">
+        <img src="Lumba-Lumba.jpeg" alt="Seekor lumba-lumba berenang" />
+        <p class="source">Sumber gambar: <a href="https://pin.it/6d4cYIt0z" target="_blank" rel="noopener">https://pin.it/6d4cYIt0z</a></p>
+      </div>
+
+      <div class="audio-player">
+        <h3 class="info-box">Suara Lumba-lumba</h3>
+        <audio controls class="info-box" aria-label="Audio suara lumba-lumba">
+          <!-- Ganti src berikut dengan file audio lumba-lumba Anda (format .mp3 disarankan) -->
+          <source src="Suara-Lumba.mp3" type="audio/mpeg" />
+          Browser Anda tidak mendukung audio.
+        </audio>
+        <p class="source">Contoh sumber audio: <a href="https://youtube.com/shorts/73_YbFaIwi0?si=yVeVJ5mch6Fek6kx" target="_blank" rel="noopener">YouTube Shorts</a></p>
+      </div>
+
+      <div class="nav-arrows">
+        <button class="arrow-btn" id="next-1" aria-label="Lanjut ke halaman ciri-ciri" data-next>
+          <span>lanjut</span> <span class="icon">➡</span>
+        </button>
+      </div>
+      <div class="stepper" role="tablist" aria-label="Indikator Halaman"></div>
+    </main>
+
+    <!-- ===================== HALAMAN 2: Ciri-ciri ===================== -->
+    <section id="page-2" class="page" data-title="Ciri-ciriku" aria-labelledby="judul-2">
+      <h2 id="judul-2">🎨 Ciri-ciriku</h2>
+      <div class="info-box">
+        <p>"Aku hewan laut yang cerdas dan ramah. Tubuhku licin, panjang, dan berwarna abu-abu. Aku punya sirip di punggung dan senyum manis di wajahku! Aku juga suka melompat dan berenang cepat di atas air."</p>
+      </div>
+      <div class="nav-arrows">
+        <button class="arrow-btn" data-prev aria-label="Kembali">
+          <span class="icon">⬅</span> <span>kembali</span>
+        </button>
+        <button class="arrow-btn" data-next aria-label="Lanjut">
+          <span>lanjut</span> <span class="icon">➡</span>
+        </button>
+      </div>
+      <div class="stepper" role="tablist" aria-label="Indikator Halaman"></div>
+    </section>
+
+    <!-- ===================== HALAMAN 3: Makanan ===================== -->
+    <section id="page-3" class="page" data-title="Aku makan apa" aria-labelledby="judul-3">
+      <h2 id="judul-3">🍽 Aku makan apa?</h2>
+      <div class="info-box">
+        <p>"Aku suka makan ikan kecil dan cumi-cumi. Aku berburu bersama teman-temanku—kami bekerja sama seperti tim yang kompak!"</p>
+      </div>
+      <div class="nav-arrows">
+        <button class="arrow-btn" data-prev aria-label="Kembali">
+          <span class="icon">⬅</span> <span>kembali</span>
+        </button>
+        <button class="arrow-btn" data-next aria-label="Lanjut">
+          <span>lanjut</span> <span class="icon">➡</span>
+        </button>
+      </div>
+      <div class="stepper" role="tablist" aria-label="Indikator Halaman"></div>
+    </section>
+
+    <!-- ===================== HALAMAN 4: Habitat ===================== -->
+    <section id="page-4" class="page" data-title="Aku tinggal di mana" aria-labelledby="judul-4">
+      <h2 id="judul-4">🌿 Aku tinggal di mana?</h2>
+      <div class="info-box">
+        <p>"Aku tinggal di laut yang hangat, dekat pantai atau di samudera luas. Kadang-kadang, aku juga muncul di atas air untuk bernapas, loh!"</p>
+      </div>
+      <div class="nav-arrows">
+        <button class="arrow-btn" data-prev aria-label="Kembali">
+          <span class="icon">⬅</span> <span>kembali</span>
+        </button>
+        <button class="arrow-btn" data-next aria-label="Lanjut">
+          <span>lanjut</span> <span class="icon">➡</span>
+        </button>
+      </div>
+      <div class="stepper" role="tablist" aria-label="Indikator Halaman"></div>
+    </section>
+
+    <!-- ===================== HALAMAN 5: Klasifikasi ===================== -->
+    <section id="page-5" class="page" data-title="Aku termasuk hewan apa" aria-labelledby="judul-5">
+      <h2 id="judul-5">📚 Aku termasuk hewan apa?</h2>
+      <div class="info-box">
+        <p>"Aku bukan ikan, walaupun hidup di laut. Aku adalah <strong>mamalia laut</strong> seperti paus. Aku bernapas dengan paru-paru, menyusui anakku, dan bisa berkomunikasi dengan suara-suara khusus yang hanya dimengerti oleh sesama lumba-lumba."</p>
+      </div>
+      <div class="nav-arrows">
+        <button class="arrow-btn" data-prev aria-label="Kembali">
+          <span class="icon">⬅</span> <span>kembali</span>
+        </button>
+        <button class="arrow-btn" data-next aria-label="Lanjut ke soal">
+          <span>lanjut ke soal</span> <span class="icon">➡</span>
+        </button>
+      </div>
+      <div class="stepper" role="tablist" aria-label="Indikator Halaman"></div>
+    </section>
+
+    <!-- ===================== HALAMAN 6: SOAL ===================== -->
+    <section id="page-6" class="page" data-title="Latihan Soal" aria-labelledby="judul-6">
+      <h2 id="judul-6">📝 Latihan Soal</h2>
+
+      <section class="aktivitas" aria-labelledby="q1">
+        <h3 id="q1">Di mana lumba-lumba tinggal?</h3>
+        <button onclick="jawaban('salah', 'feedback-rumah')">A. di kebun</button>
+        <button onclick="jawaban('salah', 'feedback-rumah')">B. di hutan</button>
+        <button onclick="jawaban('benar', 'feedback-rumah')">C. di laut</button>
+        <p id="feedback-rumah" class="feedback" aria-live="polite"></p>
+      </section>
+
+      <section class="aktivitas" aria-labelledby="q2">
+        <h3 id="q2">Apa makanan lumba-lumba?</h3>
+        <button onclick="jawaban('salah', 'feedback-makan1')">A. buah-buahan</button>
+        <button onclick="jawaban('salah', 'feedback-makan1')">B. sayuran</button>
+        <button onclick="jawaban('benar', 'feedback-makan1')">C. ikan kecil</button>
+        <p id="feedback-makan1" class="feedback" aria-live="polite"></p>
+      </section>
+
+      <section class="aktivitas" aria-labelledby="q3">
+        <h3 id="q3">Lumba-lumba termasuk hewan apa?</h3>
+        <button onclick="jawaban('benar', 'feedback-kelas')">A. mamalia</button>
+        <button onclick="jawaban('salah', 'feedback-kelas')">B. ikan</button>
+        <button onclick="jawaban('salah', 'feedback-kelas')">C. burung</button>
+        <p id="feedback-kelas" class="feedback" aria-live="polite"></p>
+      </section>
+
+      <section class="aktivitas" aria-labelledby="q4">
+        <h3 id="q4">🦈 Ikan hiu termasuk hewan apa?</h3>
+        <button onclick="jawaban('salah', 'feedback-kategori')">A. burung</button>
+        <button onclick="jawaban('salah', 'feedback-kategori')">B. mamalia</button>
+        <button onclick="jawaban('benar', 'feedback-kategori')">C. ikan</button>
+        <p id="feedback-kategori" class="feedback" aria-live="polite"></p>
+      </section>
+
+      <section class="aktivitas" aria-labelledby="q5">
+        <h3 id="q5">🦈 Gigi ikan hiu itu seperti apa?</h3>
+        <button onclick="jawaban('salah', 'feedback-anemon')">A. tumpul</button>
+        <button onclick="jawaban('salah', 'feedback-anemon')">B. paruh</button>
+        <button onclick="jawaban('benar', 'feedback-anemon')">C. tajam</button>
+        <p id="feedback-anemon" class="feedback" aria-live="polite"></p>
+      </section>
+
+      <!-- Audio feedback benar/salah -->
+      <audio id="suara-benar" src="Hebat! Kamu Benar.mp3" preload="auto"></audio>
+      <audio id="suara-salah" src="Kurang tepat, yuk coba lagi!.mp3" preload="auto"></audio>
+
+      <div class="nav-arrows">
+        <button class="arrow-btn" data-prev aria-label="Kembali">
+          <span class="icon">⬅</span> <span>kembali</span>
+        </button>
+        <button class="arrow-btn" data-next aria-label="Selesai / kembali ke awal">
+          <span>selesai</span> <span class="icon">➡</span>
+        </button>
+      </div>
+      <div class="stepper" role="tablist" aria-label="Indikator Halaman"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" aria-label="Footer">
+      <p>© 2025 Kintar. Dibuat oleh Taufik Hidayat - Mahasiswa UNTIRTA</p>
+      <div class="sosmed">
+        <a href="https://facebook.com/taufik.hidayat.416718" target="_blank" rel="noopener"><img src="FB.png" alt="Facebook"></a>
+        <a href="https://instagram.com/kiposis_official" target="_blank" rel="noopener"><img src="IG.png" alt="Instagram"></a>
+        <a href="https://wa.me/082258038059" target="_blank" rel="noopener"><img src="WA.png" alt="WhatsApp"></a>
+        <a href="mailto:taufikkipo3@gmail.com"><img src="Gmail.png" alt="Gmail"></a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // ========================= Navigasi menu samping =========================
+    const navOnBtn = document.getElementById("nav-on");
+    const navCloseBtn = document.getElementById("nav-close");
+    const navMenu = document.getElementById("nav-menu");
+
+    navOnBtn?.addEventListener("click", () => {
+      navMenu?.classList.remove("close");
+      navMenu?.classList.add("open");
+      document.body.classList.add("nav-open");
+    });
+    navCloseBtn?.addEventListener("click", () => {
+      navMenu?.classList.remove("open");
+      navMenu?.classList.add("close");
+      document.body.classList.remove("nav-open");
+    });
+
+    // ========================= Pager multi-halaman =========================
+    const pages = Array.from(document.querySelectorAll('.page'));
+    let idx = 0; // halaman aktif
+
+    // Buat dot indicator per halaman
+    function renderStepper() {
+      pages.forEach((pg, i) => {
+        const stepper = pg.querySelector('.stepper');
+        if (!stepper) return;
+        stepper.innerHTML = '';
+        pages.forEach((_, j) => {
+          const dot = document.createElement('span');
+          dot.className = 'dot' + (j === idx ? ' active' : '');
+          dot.role = 'tab';
+          dot.title = 'Halaman ${j+1}';
+          dot.tabIndex = 0;
+          dot.addEventListener('click', () => goTo(j));
+          dot.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') goTo(j); });
+          stepper.appendChild(dot);
+        });
+      });
+    }
+
+    function goTo(newIdx) {
+      if (newIdx < 0 || newIdx >= pages.length) return;
+      pages[idx].classList.remove('active');
+      idx = newIdx;
+      pages[idx].classList.add('active');
+      // Fokuskan judul halaman untuk aksesibilitas
+      const titleId = pages[idx].getAttribute('aria-labelledby');
+      const titleEl = titleId ? document.getElementById(titleId) : null;
+      titleEl?.focus?.();
+      // Perbarui hash agar bisa back/forward
+      location.hash = 'hal${idx+1}';
+      updateArrowStates();
+      renderStepper();
+    }
+
+    function next() { goTo(idx + 1 >= pages.length ? 0 : idx + 1); }
+    function prev() { goTo(idx - 1 < 0 ? pages.length - 1 : idx - 1); }
+
+    function updateArrowStates() {
+    // Set disabled hanya kalau Anda ingin non-loop. Di sini kita loop, jadi tidak disabled.
+      document.querySelectorAll('[data-prev]').forEach(b=> b.disabled = false);
+      document.querySelectorAll('[data-next]').forEach(b=> b.disabled = false);
+    }
+
+    // Bind tombol panah di setiap halaman
+    document.querySelectorAll('[data-next]').forEach(btn=> btn.addEventListener('click', next));
+    document.querySelectorAll('[data-prev]').forEach(btn=> btn.addEventListener('click', prev));
+
+    // Keyboard: ← → untuk navigasi
+    document.addEventListener('keydown', (e)=>{
+      if (e.key === 'ArrowRight') next();
+      if (e.key === 'ArrowLeft') prev();
+    });
+
+    // Inisialisasi dari hash jika ada (#hal1, #hal2, ...)
+    (function initFromHash(){
+      const m = location.hash.match(/hal(\d+)/);
+      if (m) {
+        const n = parseInt(m[1],10) - 1;
+        if (!Number.isNaN(n)) goTo(Math.max(0, Math.min(pages.length-1, n)));
+      } else {
+        goTo(0);
+      }
+    })();
+
+    // Render indikator pertama kali
+    renderStepper();
+
+    // ========================= Logika jawaban soal =========================
+    function jawaban(status, idTarget) {
+      const feedback = document.getElementById(idTarget);
+      const suaraBenar = document.getElementById("suara-benar");
+      const suaraSalah = document.getElementById("suara-salah");
+      if (!feedback) return;
+
+      if (status === "benar") {
+        feedback.textContent = "Hebat! Kamu benar!";
+        feedback.style.color = getComputedStyle(document.documentElement).getPropertyValue('--ok') || '#16a34a';
+        if (suaraBenar) { try { suaraBenar.currentTime = 0; suaraBenar.play(); } catch(_){} }
+      } else {
+        feedback.textContent = "Kurang tepat, yuk coba lagi!";
+        feedback.style.color = getComputedStyle(document.documentElement).getPropertyValue('--bad') || '#dc2626';
+        if (suaraSalah) { try { suaraSalah.currentTime = 0; suaraSalah.play(); } catch(_){} }
+      }
+    }
+  </script>
+</body>
+</html>

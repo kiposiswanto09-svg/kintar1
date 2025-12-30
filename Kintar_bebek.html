@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kintar - Bebek </title>
+  <link rel="stylesheet" href="Kintar_harimau.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+  <div class="utama">
+    <!-- Navigasi -->
+    <header class="nav-container">
+      <div class="nav-logo">
+        <i id="nav-on" class="fa fa-bars" aria-label="Buka Menu"></i>
+      </div>
+    </header>
+
+     <nav id="nav-menu" class="close" aria-label="Menu Navigasi">
+      <div class="nav-menu-action">
+        <h4>Kintar</h4>
+          <i id="nav-close" class="fa fa-xmark" aria-label="Tutup Menu"></i>
+      </div>
+        <ul class="nav-list-container">
+          <li class="nav-list"><i class="fa fa-house"></i><a href="Kintar.html">Home</a></li>
+          <li class="nav-list"><i class="fa-regular fa-circle-dot"></i><a href="Tentang_Saya.html">Tentang Saya</a></li>
+          <li class="nav-list"><i class="fa fa-code-branch"></i><a href="Kintar_Hubungi_Saya.html">Hubungi Saya</a></li>
+        </ul>
+    </nav>
+
+    <!-- Konten -->
+    <main class="content">
+     <section class="Judul">
+        <h1>Aku Bebek</h1>
+      </section>
+
+      <div class="foto">
+        <img src="Bebek.jpeg" alt="Seekor bebek berlari" />
+          <p class="source">
+          Sumber gambar:
+          <a href="https://pixabay.com" target="_blank">https://pixabay.com</a>
+          </p>
+      </div>
+
+    <div class="audio-player">
+      <h3 class="info-box">Suara Bebek 🦆</h3>
+        <audio controls class="info-box">
+        <source src="Suara Bebek~Kwek Kwek.mp4" type="audio/mpeg" />
+        Browser Anda tidak mendukung audio.
+        </audio>
+        <p class="source">
+        Sumber audio:
+        <a href="https://youtube.com/shorts/eN8AYUr2pZA?si=I7tPZRMKQHY8K" target="_blank">
+        https://youtube.com/shorts/eN8AYUr2pZA?si=I7tPZRMKQHY8K
+        </a>
+        </p>
+    </div>
+    
+      <section class="info-box">
+        <h3>🦆 Ciri-Ciri Bebek</h3>
+        <p>"Badanku bulat dan berbulu lembut, warnaku bisa putih, cokelat, atau campuran. Paruhku lebar dan kakiku berjaring seperti sandal renang. Itulah sebabnya aku jago berenang!"</p>
+        <audio control>
+          <source src="" type="audio/mpeg"/>
+        </audio>
+      </section>
+<img src=""> 
+      <section class="info-box">
+        <h3>Makanan</h3>
+        <p>"aku suka sekali: 🥬 daun-daunan 🍚 biji-bijian🪱 serangga kecil Aku adalah hewan omnivora, artinya aku makan tumbuhan dan juga hewan kecil."</p>
+        <audio control>
+          <source src="" type="audio/mpeg"/>
+        </audio>
+      </section>
+
+      <section class="info-box">
+        <h3>🌴 Tempat Tinggal</h3>
+        <p>"Aku tinggal di sawah, danau, sungai, atau kolam. Aku suka bermain air bersama teman-temanku. Kadang kami berjalan berbaris sambil kwek-kwek, seperti pasukan kecil!"</p>
+        <audio>
+          <source src="" type="audio/mpeg"/>
+        </audio>
+      </section>
+
+      <section class="info-box">
+        <h3>📚 Kategori</h3>
+        <p>"Aku temasuk hewan omnivora, aku pemakan segalanya"</p>
+        <audio>
+          <source src="" type="audio/mpeg"/>
+        </audio>
+      </section>
+
+      <!-- Aktivitas -->
+      <section class="aktivitas">
+        <h2>Ciri-CIri bebek itu s</h2>
+        <button onclick="jawaban('salah')">A.Bulu berduri dan taring panjang</button>
+        <button onclick="jawaban('benar')">B.Paruh Lebar dan kaki berjaring</button>
+        <button onclick="jawaban('salah')">C.Bulu berkilau dan ekor panjang</button>
+        <p id="feedback-makanan" class="feedback"></p>
+      </section>
+
+      <section class="tempat">
+        <h2>Di mana biasanya bebek tinggal?</h2>
+            <button onclick="jawaban('salah', 'feedback-tempat')">A. Di atas pohon</button>
+            <button onclick="jawaban('salah', 'feedback-tempat')">B. Di sarang lebah</button>
+            <button onclick="jawaban('benar', 'feedback-tempat')">C. Di kolam, sawah, dan sungai</button>
+            <p id="feedback-tempat" class="feedback"></p>
+      </section>
+
+      <section class="aktivitas">
+        <h2>Bebek bersuara seperti?</h2>
+            <button onclick="jawaban('salah', 'feedback-surai')">A. meong</button>
+            <button onclick="jawaban('benar', 'feedback-surai')">B. kwek kwek</button>
+            <button onclick="jawaban('salah', 'feedback-surai')">C. muuu</button>
+            <p id="feedback-surai" class="feedback"></p>
+      </section>
+      <!-- Audio -->
+  <audio id="suara-benar" src="Hebat! Kamu Benar.mp3"></audio>
+  <audio id="suara-salah" src="Kurang tepat, yuk coba lagi!.mp3"></audio>
+
+    </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 Kintar. Dibuat oleh Taufik Hidayat - Mahasiswa UNTIRTA</p>
+    <div class="sosmed">
+      <a href="https://facebook.com/taufik.hidayat.416718" target="_blank"><img src="FB.png" alt="Facebook"></a>
+      <a href="https://instagram.com/kiposis_official" target="_blank"><img src="IG.png" alt="Instagram"></a>
+      <a href="https://wa.me/082258038059" target="_blank"><img src="WA.png" alt="WhatsApp"></a>
+      <a href="mailto:taufikkipo3@gmail.com"><img src="Gmail.png" alt="Gmail"></a>
+    </div>
+  </div>
+  </footer>
+<script>
+  // Navigasi
+  const navOnBtn = document.getElementById("nav-on");
+  const navCloseBtn = document.getElementById("nav-close");
+  const navMenu = document.getElementById("nav-menu");
+
+  navOnBtn.addEventListener("click", () => {
+    navMenu.classList.remove("close");
+    navMenu.classList.add("open");
+    document.body.classList.add("nav-open");
+  });
+
+  navCloseBtn.addEventListener("click", () => {
+    navMenu.classList.remove("open");
+    navMenu.classList.add("close");
+    document.body.classList.remove("nav-open");
+  });
+
+  // Soal jawaban
+  function jawaban(status, idTarget = 'feedback-makanan') {
+    const feedback = document.getElementById(idTarget);
+    feedback.textContent = status === 'benar' ? "Hebat! Kamu Benar" : "Kurang tepat, yuk coba lagi!";
+    feedback.style.color = status === 'benar' ? "#16a34a" : "#dc2626";
+  }
+
+  function cekJawaban(pilihan) {
+    const feedback = document.getElementById("feedback-kuis");
+    feedback.textContent = pilihan === 'B' ? "Benar! Kamu Hebat." : "Kurang tepat, yuk coba lagi!";
+    feedback.style.color = pilihan === 'B' ? "#16a34a" : "#dc2626";
+  }
+  function jawaban(status) {
+  const feedback = document.getElementById("feedback-surai");
+  const suaraBenar = document.getElementById("suara-benar");
+  const suaraSalah = document.getElementById("suara-salah");
+
+  if (status === "benar") {
+    feedback.textContent = "Hebat! Kamu benar!";
+    suaraBenar.currentTime = 0; // reset audio
+    suaraBenar.play();
+  } else {
+    feedback.textContent = "Kurang tepat, yuk coba lagi";
+    suaraSalah.currentTime = 0;
+    suaraSalah.play();
+  }
+}
+</script>
+    
+ </body>
+</html>

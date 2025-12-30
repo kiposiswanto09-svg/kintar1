@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Game Tebak Angka</title>
+</head>
+<body>
+  <h1>Tebak Angka 1 sampai 10</h1>
+  <input type="number" id="tebakan" placeholder="Masukkan angka" />
+  <button onclick="tebak()">Tebak!</button>
+  <p id="hasil"></p>
+
+  <script>
+    // Komputer memilih angka acak 1 sampai 10
+    const angkaRahasia = Math.floor(Math.random() * 10) + 1;
+
+    function tebak() {
+      const input = document.getElementById('tebakan').value;
+      const hasil = document.getElementById('hasil');
+      const tebakan = Number(input);
+
+      if (tebakan === angkaRahasia) {
+        hasil.textContent = "Selamat! Tebakan kamu benar 🎉";
+      } else if (tebakan < angkaRahasia) {
+        hasil.textContent = "Tebakan kamu terlalu kecil!";
+      } else if (tebakan > angkaRahasia) {
+        hasil.textContent = "Tebakan kamu terlalu besar!";
+      } else {
+        hasil.textContent = "Masukkan angka yang valid!";
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,629 @@
+/* Reset & Global Styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+  font-family: 'Arial Rounded MT Bold', sans-serif;
+  background: linear-gradient(to bottom right, #E6F0FA, #ffffff);
+  color: #00796b;
+  padding-top: 80px;
+}
+
+h1,
+h2 {
+  color: #00796b;
+  border-bottom: 2px solid #80cbc4;
+  padding-bottom: 5px;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+/* Navigation Styles */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #E6F0FA;
+  padding: 10px 20px;
+  z-index: 999;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+nav.scrolled {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  transition: transform 0.3s ease;
+}
+
+.nav-logo:hover {
+  transform: scale(1.05);
+}
+
+.nav-logo img {
+  height: 40px;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+  transition: filter 0.3s ease;
+}
+
+.nav-logo:hover img {
+  filter: brightness(1.1);
+}
+
+/* Desktop Navigation */
+.nav-list-container {
+  list-style: none;
+  display: flex;
+  justify-content: right;
+  gap: 20px;
+  background: #E6F0FA;
+  padding: 10px;
+}
+
+.nav-list {
+  color: #555;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  padding: 8px 16px;
+  overflow: hidden;
+}
+
+.nav-list::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #00796b, #80cbc4);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-list:hover::before {
+  width: 80%;
+}
+
+.nav-list:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 121, 107, 0.2);
+}
+
+.nav-list a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: color 0.3s ease;
+}
+
+.nav-list:hover a {
+  color: #00796b;
+}
+
+.nav-list.active {
+  background: linear-gradient(135deg, #00796b, #80cbc4);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 121, 107, 0.3);
+}
+
+.nav-list.active::before {
+  display: none;
+}
+
+/* Desktop mode */
+.menu-toggle {
+  display: none;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+/* Overlay layar saat menu aktif */
+.overlay {
+  display: none;
+}
+
+/* Tombol hamburger (☰) */
+.menu-toggle {
+  display: none;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 90vh;
+  padding: 40px;
+  gap: 40px;
+  flex-wrap: wrap;
+
+}
+
+.hero-text {
+  flex: 1 1 45%;
+}
+
+.hero-text h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.hero-text p {
+  font-size: 20px;
+  margin-bottom: 30px;
+  color: #34495e;
+}
+
+.cta {
+  display: inline-block;
+  background-color: #00b894;
+  color: white;
+  padding: 14px 28px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.cta:hover {
+  background-color: #019875;
+}
+
+.hero-video {
+  flex: 1 1 50%;
+  text-align: center;
+}
+
+.hero-video video {
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Hero Responsive */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column-reverse;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .hero-text h1 {
+    font-size: 36px;
+  }
+
+  .hero-text p {
+    font-size: 18px;
+  }
+}
+
+/* Info Section */
+.info {
+  padding: 60px 40px;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.info h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.info p,
+.info ul li {
+  font-size: 18px;
+  color: #555;
+}
+
+.info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.info ul li {
+  margin: 10px 0;
+  color: #1e3799;
+}
+
+/* Produk Kintar */
+.produk-kintar {
+  padding: 20px;
+  background-color: #f8f9fa;
+}
+
+.produk-kintar h2 {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.produk-grid {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 10px;
+  scrollbar-width: thin;
+  /* Firefox */
+}
+
+.produk-grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.produk-grid::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+.produk-item {
+  flex: 0 0 auto;
+  width: 160px;
+  height: 260px;
+  object-fit: cover;
+  scroll-snap-align: start;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+  min-width: 150px;
+  flex-shrink: 0;
+}
+
+.produk-item:hover {
+  transform: scale(1.05);
+}
+
+/* === Produk Kintar === */
+.produk-kintar {
+  padding: 20px;
+  background-color: #f8f9fa;
+}
+
+.produk-kintar h2 {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* === Wrapper Scroll Horizontal === */
+.produk-scroll-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* === Grid Produk (Isi Kartu) === */
+.produk-grid {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding: 10px 40px;
+  /* beri ruang agar tidak ketutupan tombol scroll */
+  scrollbar-width: thin;
+  /* Firefox */
+}
+
+/* === Scrollbar Custom (Webkit) === */
+.produk-grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.produk-grid::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+/* === Kartu Produk === */
+.produk-item {
+  flex: 0 0 auto;
+  width: 160px;
+  height: 260px;
+  object-fit: cover;
+  scroll-snap-align: start;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.produk-item:hover {
+  transform: scale(1.05);
+}
+
+/* === Tombol Scroll Kiri & Kanan === */
+.scroll-btn {
+  background-color: rgba(0, 0, 0, 0.4);
+  border: none;
+  color: white;
+  font-size: 32px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: background-color 0.3s ease;
+}
+
+.scroll-btn:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.scroll-btn.left {
+  left: 10px;
+}
+
+.scroll-btn.right {
+  right: 10px;
+}
+
+/* Bagian Umum */
+.bagian {
+  background: #f3f3f3;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bagian ul li {
+  margin-bottom: 6px;
+}
+
+/* Form */
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 6px 0 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+input[type="submit"] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+  width: 100%;
+}
+
+input[type="submit"]:hover {
+  background-color: #039f67;
+}
+
+.feedback {
+  font-size: 16px;
+  margin-top: 12px;
+  text-align: center;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  background-color: #00796b;
+  color: white;
+  padding: 20px;
+}
+
+.footer .sosmed img {
+  width: 30px;
+  margin: 5px;
+}
+
+.sosmed img {
+  height: 30px;
+  width: 30px;
+  object-fit: contain;
+}
+
+/* Animasi */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  body {
+    padding-top: 70px;
+  }
+
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 0px;
+    z-index: 1100;
+  }
+
+  .nav-list-container {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 200px;
+    height: 100%;
+    background-color: #E6F0FA;
+    flex-direction: column;
+    padding-top: 60px;
+    transition: right 0.3s ease;
+    z-index: 1000;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-list-container.active {
+    right: 0;
+  }
+
+  .nav-list {
+    color: #555;
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(0, 121, 107, 0.1);
+    margin: 0 10px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .nav-list::before {
+    display: none;
+  }
+
+  .nav-list:hover {
+    background: rgba(0, 121, 107, 0.1);
+    transform: translateX(5px);
+    box-shadow: none;
+  }
+
+  .nav-list.active {
+    background: linear-gradient(135deg, #00796b, #80cbc4);
+    color: white;
+    transform: translateX(5px);
+  }
+
+  .nav-list a {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .nav-list a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .nav-list:hover a::after {
+    left: 100%;
+  }
+    .hero {
+    flex-direction: column;
+    padding: 60px 20px 20px; /* tambah jarak atas */
+    text-align: center;
+  }
+
+  .hero-text {
+    order: 1; /* Penjelasan duluan */
+  }
+
+  .hero-video {
+    order: 2; /* Video di bawah */
+  }
+}
+  
+ 
+
+
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, #00796b, #80cbc4);
+  z-index: 1001;
+  transition: width 0.1s ease;
+}
+
+/* Smooth animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Ripple effect */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.ripple:active::after {
+  width: 200px;
+  height: 200px;
+}

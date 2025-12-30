@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kintar - Lumba </title>
+  <link rel="stylesheet" href="Kintar_harimau.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+  <div class="utama">
+    <!-- Navigasi -->
+    <header class="nav-container">
+      <div class="nav-logo">
+        <i id="nav-on" class="fa fa-bars" aria-label="Buka Menu"></i>
+      </div>
+    </header>
+
+     <nav id="nav-menu" class="close" aria-label="Menu Navigasi">
+      <div class="nav-menu-action">
+        <h4>Kintar</h4>
+          <i id="nav-close" class="fa fa-xmark" aria-label="Tutup Menu"></i>
+      </div>
+        <ul class="nav-list-container">
+          <li class="nav-list"><i class="fa fa-house"></i><a href="Kintar.html">Home</a></li>
+          <li class="nav-list"><i class="fa-regular fa-circle-dot"></i><a href="Tentang_Saya.html">Tentang Saya</a></li>
+          <li class="nav-list"><i class="fa fa-code-branch"></i><a href="Kintar_Hubungi_Saya.html">Hubungi Saya</a></li>
+        </ul>
+    </nav>
+
+    <!-- Konten -->
+    <main class="content">
+      <section class="Judul">
+        <h1>Aku Lumba</h1>
+      </section>
+
+      <div class="foto">
+        <img src="Lumba-Lumba.jpeg" alt="Seekor Lumba-lumba berenang" />
+          <p class="source">
+          Sumber gambar:
+          <a href="https://pin.it/6d4cYIt0z" target="_blank">https://pin.it/6d4cYIt0z</a>
+          </p>
+      </div>
+        <div class="audio-player">
+        <h3 class="info-box">Suara Lumba-Lumba</h3>
+            <audio controls class="info-box">
+                <source src="Suara burung kakak tua jambul kuning.mp4" type="audio/mpeg" />
+                Browser Anda tidak mendukung audio.
+            </audio>
+            <p class="source">Sumber audio:<a href="https://youtube.com/shorts/73_YbFaIwi0?si=yVeVJ5mch6Fek6kx" target="_blank">https://youtube.com/shorts/73_YbFaIwi0?si=yVeVJ5mch6Fek6kx
+            </a>
+            </p>
+        </div>
+    
+      <section class="info-box">
+        <h3>🎨 Ciri-ciriku?</h3>
+        <p>"Aku hewan laut yang cerdas dan ramah. Tubuhku licin, panjang, dan berwarna abu-abu. Aku punya sirip di punggungku dan senyum manis di wajahku! Aku juga suka melompat dan berenang cepat di atas air."</p>
+        <audio control>
+          <source src="" type="audio/mpeg"/>
+        </audio>
+      </section>
+
+      <section class="info-box">
+        <h3>🍽️ Aku makan apa?</h3>
+        <p>"Aku suka makan ikan kecil dan cumi-cumi. Aku berburu bersama teman-temanku—kami bekerja sama seperti tim yang kompak!"</p>
+        <audio control>
+          <source src="" type="audio/mpeg"/>
+        </audio>
+      </section>
+
+      <section class="info-box">
+        <h3>🌿 Aku tinggal di mana?</h3>
+        <p>"Aku tinggal di laut yang hangat, dekat pantai atau di samudera luas. Kadang-kadang, aku juga muncul di atas air untuk bernapas, loh!"</p>
+        <audio>
+          <source src="" type="audio/mpeg"/>
+        </audio>
+      </section>
+
+      <section class="info-box">
+        <h3>📚 Aku termasuk hewan apa?</h3>
+        <p>"Aku bukan ikan, walaupun hidup di laut. Aku adalah mamalia laut seperti paus. Aku bernapas dengan paru-paru, dan menyusui anakku. Aku juga bisa berkomunikasi dengan suara-suara khusus yang hanya dimengerti oleh sesama lumba-lumba."</p>
+        <audio>
+          <source src="" type="audio/mpeg"/>
+        </audio>
+      </section>
+
+    <!-- Aktivitas -->
+    <section class="aktivitas">
+  <h2>Di mana lumba-lumba tinggal?</h2>
+  <button onclick="jawaban('salah', 'feedback-rumah')">A. di kebun</button>
+  <button onclick="jawaban('salah', 'feedback-rumah')">B. di Hutan</button>
+  <button onclick="jawaban('benar', 'feedback-rumah')">C. di laut</button>
+  <p id="feedback-rumah" class="feedback"></p>
+</section>
+
+<section class="tempat">
+  <h2>Apa makanan lumba-lumba?</h2>
+  <button onclick="jawaban('salah', 'feedback-warna')">A. buah-buahan</button>
+  <button onclick="jawaban('salah', 'feedback-warna')">B. Sayuran</button>
+  <button onclick="jawaban('benar', 'feedback-warna')">C. Ikan kecil</button>
+  <p id="feedback-warna" class="feedback"></p>
+</section>
+
+<section class="aktivitas">
+  <h2>Lumba-lumba termasuk hewan apa?</h2>
+  <button onclick="jawaban('benar', 'feedback-makan')">A. Mamalia</button>
+  <button onclick="jawaban('salah', 'feedback-makan')">B. Ikan</button>
+  <button onclick="jawaban('salah', 'feedback-makan')">C. Burung</button>
+  <p id="feedback-makan" class="feedback"></p>
+</section>
+
+<section class="aktivitas">
+  <h2>🦈 Ikan hiu termasuk hewan apa?</h2>
+  <button onclick="jawaban('salah', 'feedback-kategori')">A. Burung</button>
+  <button onclick="jawaban('salah', 'feedback-kategori')">B. Mamalia</button>
+  <button onclick="jawaban('benar', 'feedback-kategori')">C. Ikan</button>
+  <p id="feedback-kategori" class="feedback"></p>
+</section>
+
+<section class="aktivitas">
+  <h2>🦈 Gigi ikan hiu itu seperti apa?</h2>
+  <button onclick="jawaban('salah', 'feedback-anemon')">A. Tumpul</button>
+  <button onclick="jawaban('salah', 'feedback-anemon')">B. Paruh</button>
+  <button onclick="jawaban('benar', 'feedback-anemon')">C. Tajam</button>
+  <p id="feedback-anemon" class="feedback"></p>
+</section>
+    </main>
+
+<!-- Audio -->
+  <audio id="suara-benar" src="Hebat! Kamu Benar.mp3"></audio>
+  <audio id="suara-salah" src="Kurang tepat, yuk coba lagi!.mp3"></audio>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 Kintar. Dibuat oleh Taufik Hidayat - Mahasiswa UNTIRTA</p>
+    <div class="sosmed">
+      <a href="https://facebook.com/taufik.hidayat.416718" target="_blank"><img src="FB.png" alt="Facebook"></a>
+      <a href="https://instagram.com/kiposis_official" target="_blank"><img src="IG.png" alt="Instagram"></a>
+      <a href="https://wa.me/082258038059" target="_blank"><img src="WA.png" alt="WhatsApp"></a>
+      <a href="mailto:taufikkipo3@gmail.com"><img src="Gmail.png" alt="Gmail"></a>
+    </div>
+  </div>
+  </footer>
+
+  <script>
+  // Navigasi
+  const navOnBtn = document.getElementById("nav-on");
+  const navCloseBtn = document.getElementById("nav-close");
+  const navMenu = document.getElementById("nav-menu");
+
+  navOnBtn.addEventListener("click", () => {
+    navMenu.classList.remove("close");
+    navMenu.classList.add("open");
+    document.body.classList.add("nav-open");
+  });
+
+  navCloseBtn.addEventListener("click", () => {
+    navMenu.classList.remove("open");
+    navMenu.classList.add("close");
+    document.body.classList.remove("nav-open");
+  });
+
+  // Soal jawaban
+  function jawaban(status, idTarget = 'feedback-makanan') {
+    const feedback = document.getElementById(idTarget);
+    feedback.textContent = status === 'benar' ? "Hebat! Kamu Benar" : "Yuk coba lagi!";
+    feedback.style.color = status === 'benar' ? "#16a34a" : "#dc2626";
+  }
+
+  function cekJawaban(pilihan) {
+    const feedback = document.getElementById("feedback-kuis");
+    feedback.textContent = pilihan === 'C' ? "Benar! Ada 3 daging." : "Salah, coba lagi ya!";
+    feedback.style.color = pilihan === 'C' ? "#16a34a" : "#dc2626";
+  }
+  function jawaban(status, idTarget = 'feedback-makanan') {
+  const feedback = document.getElementById(idTarget);
+  const suaraBenar = document.getElementById("suara-benar");
+  const suaraSalah = document.getElementById("suara-salah");
+
+  if (status === "benar") {
+    feedback.textContent = "Hebat! Kamu benar!";
+    feedback.style.color = "#16a34a";
+    suaraBenar.currentTime = 0;
+    suaraBenar.play();
+  } else {
+    feedback.textContent = "Kurang tepat, yuk coba lagi!";
+    feedback.style.color = "#dc2626";
+    suaraSalah.currentTime = 0;
+    suaraSalah.play();
+  }
+}
+</script>
+    
+ </body>
+</html>

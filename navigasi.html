@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Navigation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial Rounded MT Bold', sans-serif;
+            background: linear-gradient(to bottom right, #E6F0FA, #ffffff);
+            color: #00796b;
+            padding-top: 80px;
+            min-height: 100vh;
+        }
+
+        h1, h2 {
+            color: #00796b;
+            border-bottom: 2px solid #80cbc4;
+            padding-bottom: 5px;
+        }
+
+        /* Navigation Styles */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #E6F0FA;
+            padding: 10px 20px;
+            z-index: 999;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-logo img {
+            height: 40px;
+            width: auto;
+            max-width: 120px;
+            object-fit: contain;
+            transition: filter 0.3s ease;
+        }
+
+        .nav-logo:hover img {
+            filter: brightness(1.1);
+        }
+
+        /* Desktop Navigation */
+        .nav-list-container {
+            list-style: none;
+            display: flex;
+            justify-content: right;
+            gap: 20px;
+            background: #E6F0FA;
+            padding: 10px;
+        }
+
+        .nav-list {
+            color: #555;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            padding: 8px 16px;
+            overflow: hidden;
+        }
+
+        .nav-list::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #00796b, #80cbc4);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-list:hover::before {
+            width: 80%;
+        }
+
+        .nav-list:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 121, 107, 0.2);
+        }
+
+        .nav-list a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            width: 100%;
+            height: 100%;
+            transition: color 0.3s ease;
+        }
+
+        .nav-list:hover a {
+            color: #00796b;
+        }
+
+        .nav-list.active {
+            background: linear-gradient(135deg, #00796b, #80cbc4);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 121, 107, 0.3);
+        }
+
+        .nav-list.active::before {
+            display: none;
+        }
+
+        /* Mobile Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+            padding: 10px;
+            color: #00796b;
+            transition: all 0.3s ease;
+            border-radius: 6px;
+        }
+
+        .menu-toggle:hover {
+            background: rgba(0, 121, 107, 0.1);
+            transform: scale(1.1);
+        }
+
+        .menu-toggle.active {
+            transform: rotate(90deg);
+            color: #80cbc4;
+        }
+
+        /* Overlay */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Content Area */
+        .content {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .demo-section {
+            background: white;
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .demo-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 15px;
+                z-index: 1100;
+            }
+
+            .nav-list-container {
+                position: fixed;
+                top: 0;
+                right: -250px;
+                width: 200px;
+                height: 100%;
+                background-color: #E6F0FA;
+                flex-direction: column;
+                padding-top: 60px;
+                transition: right 0.3s ease;
+                z-index: 1000;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-list-container.active {
+                right: 0;
+            }
+
+            .nav-list {
+                color: #555;
+                padding: 15px 20px;
+                border-bottom: 1px solid rgba(0, 121, 107, 0.1);
+                margin: 0 10px;
+                border-radius: 8px;
+                transition: all 0.3s ease;
+            }
+
+            .nav-list::before {
+                display: none;
+            }
+
+            .nav-list:hover {
+                background: rgba(0, 121, 107, 0.1);
+                transform: translateX(5px);
+                box-shadow: none;
+            }
+
+            .nav-list.active {
+                background: linear-gradient(135deg, #00796b, #80cbc4);
+                color: white;
+                transform: translateX(5px);
+            }
+
+            .nav-list a {
+                position: relative;
+                overflow: hidden;
+            }
+
+            .nav-list a::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+                transition: left 0.5s ease;
+            }
+
+            .nav-list:hover a::after {
+                left: 100%;
+            }
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #00796b, #80cbc4);
+            z-index: 1001;
+            transition: width 0.1s ease;
+        }
+
+        /* Smooth animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        /* Ripple effect */
+        .ripple {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ripple::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .ripple:active::after {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator" id="scrollIndicator"></div>
+
+    <nav id="navbar">
+        <!-- Logo di kiri -->
+        <div class="nav-logo">
+            <img src="https://via.placeholder.com/120x40/00796b/ffffff?text=KINTAR" alt="Logo Kintar" />
+        </div>
+
+        <!-- Tombol hamburger -->
+        <div class="menu-toggle ripple" id="menuToggle">☰</div>
+
+        <!-- Overlay -->
+        <div class="overlay" id="overlay"></div>
+
+        <!-- Navigasi -->
+        <ul class="nav-list-container" id="navLinks">
+            <li class="nav-list active ripple"><a href="#home">Home</a></li>
+            <li class="nav-list ripple"><a href="#about">Tentang Website</a></li>
+            <li class="nav-list ripple"><a href="#products">Produk</a></li>
+            <li class="nav-list ripple"><a href="#usage">Penggunaan</a></li>
+            <li class="nav-list ripple"><a href="#creation">Pembuatan</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <div class="demo-section fade-in-up">
+            <h1>Interactive Navigation Demo</h1>
+            <p>This enhanced navigation includes:</p>
+            <ul>
+                <li>Smooth hover animations with underline effects</li>
+                <li>Logo hover scaling and brightness effects</li>
+                <li>Active state highlighting</li>
+                <li>Mobile hamburger menu with slide animations</li>
+                <li>Scroll indicator at the top</li>
+                <li>Ripple effects on clickable elements</li>
+                <li>Backdrop blur when scrolling</li>
+                <li>Smooth transitions throughout</li>
+            </ul>
+        </div>
+
+        <div class="demo-section fade-in-up">
+            <h2>Features Added</h2>
+            <p>✨ Hover effects with smooth transitions</p>
+            <p>🎯 Active menu item highlighting</p>
+            <p>📱 Enhanced mobile menu experience</p>
+            <p>🌊 Ripple click effects</p>
+            <p>📊 Scroll progress indicator</p>
+            <p>🎨 Modern visual feedback</p>
+        </div>
+
+        <div class="demo-section fade-in-up">
+            <h2>Mobile Responsive</h2>
+            <p>The navigation adapts perfectly to mobile devices with a smooth sliding menu and enhanced touch interactions.</p>
+        </div>
+
+        <div class="demo-section fade-in-up">
+            <h2>Test the Navigation</h2>
+            <p>Try hovering over the navigation items, clicking the hamburger menu on mobile, and scrolling to see all the interactive effects in action!</p>
+        </div>
+    </div>
+
+    <script>
+        // Navigation functionality
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const overlay = document.getElementById('overlay');
+        const navbar = document.getElementById('navbar');
+        const scrollIndicator = document.getElementById('scrollIndicator');
+
+        // Toggle mobile menu
+        menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        // Close menu when clicking overlay
+        overlay.addEventListener('click', function() {
+            navLinks.classList.remove('active');
+            overlay.classList.remove('active');
+            menuToggle.classList.remove('active');
+        });
+
+        // Close menu when clicking nav links (mobile)
+        document.querySelectorAll('.nav-list a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Remove active class from all nav items
+                document.querySelectorAll('.nav-list').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Add active class to clicked item
+                this.parentElement.classList.add('active');
+                
+                // Close mobile menu
+                navLinks.classList.remove('active');
+                overlay.classList.remove('active');
+                menuToggle.classList.remove('active');
+                
+                // Prevent default for demo
+                e.preventDefault();
+            });
+        });
+
+        // Scroll effects
+        window.addEventListener('scroll', function() {
+            // Navbar shadow effect
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            // Scroll indicator
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            scrollIndicator.style.width = scrollPercent + '%';
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add fade-in animation to sections when they come into view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.demo-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                navLinks.classList.remove('active');
+                overlay.classList.remove('active');
+                menuToggle.classList.remove('active');
+            }
+        });
+
+        // Add ripple effect to clickable elements
+        document.querySelectorAll('.ripple').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple-effect');
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+    </script>
+</body>
+</html>

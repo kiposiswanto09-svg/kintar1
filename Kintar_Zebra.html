@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kintar - Zebra</title>
+  <link rel="stylesheet" href="Kintar_harimau.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+  <div class="utama">
+    <!-- Navigasi -->
+    <header class="nav-container">
+      <div class="nav-logo">
+        <i id="nav-on" class="fa fa-bars" aria-label="Buka Menu"></i>
+      </div>
+    </header>
+
+     <nav id="nav-menu" class="close" aria-label="Menu Navigasi">
+      <div class="nav-menu-action">
+        <h4>Kintar</h4>
+          <i id="nav-close" class="fa fa-xmark" aria-label="Tutup Menu"></i>
+      </div>
+        <ul class="nav-list-container">
+          <li class="nav-list"><i class="fa fa-house"></i><a href="Kintar.html">Home</a></li>
+          <li class="nav-list"><i class="fa-regular fa-circle-dot"></i><a href="Kintar.html #tentang" id="tentang">Tentang Saya</a></li>
+          <li class="nav-list"><i class="fa fa-code-branch"></i><a href="Kintar_Hubungi_Saya.html">Hubungi Saya</a></li>
+        </ul>
+    </nav>
+
+    <!-- Konten -->
+    <main class="content">
+      <section class="Judul">
+        <h1>Aku Zebra</h1>
+      </section>
+
+       <div class="foto">
+        <img src="Zebra.jpeg" alt="Elang" />
+          <p class="source">
+          Sumber gambar:
+          <a href="https://pin.it/7hZpsQ2VR" target="_blank">https://pin.it/7hZpsQ2VR</a>
+          </p>
+      </div>
+
+    <div class="audio-player">
+      <h3 class="info-box">Suara Zebra 🦓</h3>
+        <audio controls class="info-box">
+          <source src="Audio_Zebra.mp3" type="audio/mpeg" />
+          Browser Anda tidak mendukung audio.
+        </audio>
+        <p class="source">
+        Sumber audio:
+        <a href="https://youtu.be/yBUU4MNyvQ0?si=_Lff2Z8r0UjqNbiB" target="_blank">https://youtu.be/yBUU4MNyvQ0?si=_Lff2Z8r0UjqNbiB</a></p>
+    </div>
+
+      <section class="info-box">
+        <h3>🦓 Ciri-Ciri Zebra</h3>
+        <p>"Tubuhku berwarna hitam putih, mirip seperti kuda tapi memiliki corak unik di seluruh tubuh, dan aku memiliki telinga yang tajam dan mata besar."</p>
+      </section>
+
+      <section class="info-box">
+        <h3>🍀 Makanan</h3>
+        <p>"Rumput hijau jadi kesukaanku, Daun segar pun tak kulewatkan. Kadang kulit pohon kunyah perlahan, Itulah makananku setiap harian."</p>
+      </section>
+
+      <section class="info-box">
+        <h3>🏞 Tempat Tinggal</h3>
+        <p>"Aku tinggal di padang rumput yang luas, tempat angin berhembus lembut dan matahari bersinar hangat. Sabana adalah rumahku, di sanalah aku berlari bersama kawanan sambil menikmati hijaunya alam."</p>
+      </section>
+
+      <section class="info-box">
+        <h3> Kategori</h3>
+        <p>"Aku termasuk hewan herbivora, artinya aku hanya makan tumbuhan. Aku tak suka daging, karena tubuhku lebih suka makanan hijau yang segar. Daun dan rumput adalah favoritku setiap hari."</p>
+      </section>
+
+    <!-- Aktivitas -->
+    <section class="aktivitas">
+      <h2>Tebak Makanan Zebra?</h2>
+      <button onclick="jawaban('benar')">🍀 Daun</button>
+      <button onclick="jawaban('salah')">🥩 Daging</button>
+      <button onclick="jawaban('salah')">🥦 Sayuran</button>
+      <p id="feedback-makanan" class="feedback"></p>
+    </section>
+    
+   <section class="tempat">
+        <h2>Zebra Tinggal di tempat?</h2>
+            <button onclick="jawaban('salah', 'feedback-tempat')">Hutan</button>
+            <button onclick="jawaban('benar', 'feedback-tempat')">Padang Rumput</button>
+            <button onclick="jawaban('salah', 'feedback-tempat')">Laut</button>
+            <p id="feedback-tempat" class="feedback"></p>
+    </section>
+
+    <section class="aktivitas">
+        <h2>Siapa yang punya corak hitam putih di seluruh tubuhnya?</h2>
+            <button onclick="jawaban('benar', 'feedback-surai')">🦓 Zebra</button>
+            <button onclick="jawaban('salah', 'feedback-surai')">🐯 Harimau</button>
+            <button onclick="jawaban('salah', 'feedback-surai')">🦁 Singa</button>
+            <p id="feedback-surai" class="feedback"></p>
+    </section>
+<!-- Audio -->
+  <audio id="suara-benar" src="Hebat! Kamu Benar.mp3"></audio>
+  <audio id="suara-salah" src="Kurang tepat, yuk coba lagi!.mp3"></audio>
+    </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 Kintar. Dibuat oleh Taufik Hidayat - Mahasiswa UNTIRTA</p>
+    <div class="sosmed">
+      <a href="https://facebook.com/taufik.hidayat.416718" target="_blank"><img src="FB.png" alt="Facebook"></a>
+      <a href="https://instagram.com/kiposis_official" target="_blank"><img src="IG.png" alt="Instagram"></a>
+      <a href="https://wa.me/082258038059" target="_blank"><img src="WA.png" alt="WhatsApp"></a>
+      <a href="mailto:taufikkipo3@gmail.com"><img src="Gmail.png" alt="Gmail"></a>
+    </div>
+  </div>
+  </footer>
+  <!-- Script Navigasi -->
+<script>
+  const navOnBtn = document.getElementById("nav-on");
+  const navCloseBtn = document.getElementById("nav-close");
+  const navMenu = document.getElementById("nav-menu");
+
+  navOnBtn.addEventListener("click", () => {
+    navMenu.classList.remove("close");
+    navMenu.classList.add("open");
+    document.body.classList.add("nav-open");
+  });
+
+  navCloseBtn.addEventListener("click", () => {
+    navMenu.classList.remove("open");
+    navMenu.classList.add("close");
+    document.body.classList.remove("nav-open");
+  });
+</script>
+
+<!-- Script Soal -->
+<script>
+  function jawaban(status, idTarget = 'feedback-makanan') {
+    const feedback = document.getElementById(idTarget);
+    const suaraBenar = document.getElementById("suara-benar");
+    const suaraSalah = document.getElementById("suara-salah");
+
+    if (status === "benar") {
+      feedback.textContent = "Hebat! Kamu benar!";
+      feedback.style.color = "#16a34a";
+      suaraBenar.currentTime = 0;
+      suaraBenar.play();
+    } else {
+      feedback.textContent = "Kurang tepat, yuk coba lagi!";
+      feedback.style.color = "#dc2626";
+      suaraSalah.currentTime = 0;
+      suaraSalah.play();
+    }
+  }
+
+  function cekJawaban(pilihan) {
+    const feedback = document.getElementById("feedback-kuis");
+    feedback.textContent = pilihan === 'C' ? "Benar! Ada 3 daun." : "Salah, coba lagi ya!";
+    feedback.style.color = pilihan === 'C' ? "#16a34a" : "#dc2626";
+  }
+</script>
+    
+ 
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kintar - Harimau</title>
+  <link rel="stylesheet" href="Kintar_harimau.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+  <div class="utama">
+    <!-- Navigasi -->
+    <header class="nav-container">
+      <div class="nav-logo">
+        <i id="nav-on" class="fa fa-bars" aria-label="Buka Menu"></i>
+      </div>
+    </header>
+
+     <nav id="nav-menu" class="close" aria-label="Menu Navigasi">
+      <div class="nav-menu-action">
+        <h4>Kintar</h4>
+          <i id="nav-close" class="fa fa-xmark" aria-label="Tutup Menu"></i>
+      </div>
+        <ul class="nav-list-container">
+          <li class="nav-list"><i class="fa fa-house"></i><a href="Kintar.html">Home</a></li>
+          <li class="nav-list"><i class="fa-regular fa-circle-dot"></i><a href="Tentang_Website.html" id="tentang">Tentang Website</a></li>
+          <li class="nav-list"><i class="fa fa-code-branch"></i><a href="Kintar_Hubungi_Saya.html">Hubungi Saya</a></li>
+        </ul>
+    </nav>
+
+    <!-- Konten -->
+    <main class="content">
+      <section class="Judul">
+        <h1>Aku Harimau</h1>
+      </section>
+
+      <div class="foto">
+        <img src="Kintar_Harimau.jpeg" alt="Gambar Harimau" />
+      </div>
+
+      <div class="audio-player">
+        <h3 class="info-box">Suara Harimau 🐯</h3>
+        <audio controls class="info-box">
+          <source src="Audio_Harimau.mp3" type="audio/mpeg" />
+          Browser Anda tidak mendukung audio.
+        </audio>
+      </div>
+
+      <section class="info-box">
+        <h3>🐯 Ciri-Ciri Harimau</h3>
+        <p>"Aku memiliki belang hitam di tubuhku. Aku suka menyendiri. Aku juga kuat dan sangat gesit saat bergerak."</p>
+      </section>
+
+      <section class="info-box">
+        <h3>🍖 Makanan</h3>
+        <p>"Aku si pemburu tangguh! Makananku adalah daging. Aku sering mengejar rusa, babi, atau kerbau di hutan luas."</p>
+      </section>
+
+      <section class="info-box">
+        <h3>🏞 Tempat Tinggal</h3>
+        <p>"Aku tinggal di hutan, padang rumput, dan pegunungan. Tidak hanya di Indonesia, aku juga bisa ditemukan di banyak negara lain, loh!"</p>
+      </section>
+
+      <section class="info-box">
+        <h3> Kategori</h3>
+        <p>"Aku suka menyendiri dan jarang hidup berkelompok. Aku termasuk hewan karnivora, artinya aku makan daging sebagai makanan utamaku."</p>
+      </section>
+
+    <!-- Aktivitas -->
+    <section class="aktivitas">
+      <h2>Tebak Makanan Harimau?</h2>
+        <button onclick="jawaban('benar', 'feedback-makanan')">🥩 Daging</button>
+        <button onclick="jawaban('salah', 'feedback-makanan')">🍎 Buah</button>
+        <button onclick="jawaban('salah', 'feedback-makanan')">🥦 Sayuran</button>
+        <p id="feedback-makanan" class="feedback"></p>
+    </section>
+
+    <!-- Kuis Daging -->
+    <section class="kuis-daging">
+      <h2>🍖 Ada berapa potong daging?</h2>
+      <div class="gambar-daging">
+        <img src="Daing-Transparan-removebg-preview.png" alt="Potongan Daging" />
+        <img src="Daing-Transparan-removebg-preview.png" alt="Potongan Daging" />
+        <img src="Daing-Transparan-removebg-preview.png" alt="Potongan Daging" />
+      </div>
+      <div class="pilihan-jawaban">
+        <button onclick="cekJawaban('A')">A. 1</button>
+        <button onclick="cekJawaban('B')">B. 2</button>
+        <button onclick="cekJawaban('C')">C. 3</button>
+      </div>
+      <p id="feedback-kuis" class="feedback"></p>
+    </section>
+    
+    <section class="tempat">
+      <h2>Harimau Tinggal di tempat?</h2>
+        <button onclick="jawaban('salah', 'feedback-tempat')">🏠 Rumah</button>
+        <button onclick="jawaban('benar', 'feedback-tempat')">🌲 Hutan</button>
+        <button onclick="jawaban('salah', 'feedback-tempat')">🌊 Laut</button>
+        <p id="feedback-tempat" class="feedback"></p>
+    </section>
+    <!-- Audio -->
+  <audio id="suara-benar" src="Hebat! Kamu Benar.mp3"></audio>
+  <audio id="suara-salah" src="Kurang tepat, yuk coba lagi!.mp3"></audio>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 Kintar. Dibuat oleh Taufik Hidayat - Mahasiswa UNTIRTA</p>
+    <div class="sosmed">
+      <a href="https://facebook.com/taufik.hidayat.416718" target="_blank"><img src="FB.png" alt="Facebook"></a>
+      <a href="https://instagram.com/kiposis_official" target="_blank"><img src="IG.png" alt="Instagram"></a>
+      <a href="https://wa.me/082258038059" target="_blank"><img src="WA.png" alt="WhatsApp"></a>
+      <a href="mailto:taufikkipo3@gmail.com"><img src="Gmail.png" alt="Gmail"></a>
+    </div>
+  </div>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    // Toggle navigasi menu
+    const navOnBtn = document.getElementById("nav-on");
+    const navCloseBtn = document.getElementById("nav-close");
+    const navMenu = document.getElementById("nav-menu");
+
+      navOnBtn.addEventListener("click", () => {
+        navMenu.classList.remove("close");
+        navMenu.classList.add("open");
+        document.body.classList.add("nav-open");
+      });
+
+      navCloseBtn.addEventListener("click", () => {
+        navMenu.classList.remove("open");
+        navMenu.classList.add("close");
+          document.body.classList.remove("nav-open");
+      });
+
+    // Soal interaktif: jawaban benar/salah
+    function jawaban(status, idTarget) {
+    const feedback = document.getElementById(idTarget);
+      feedback.textContent = status === 'benar' ? "Hebat! Kamu Benar" : "Yuk coba lagi!";
+      feedback.style.color = status === 'benar' ? "#16a34a" : "#dc2626";
+    }
+
+    // Soal hitung jumlah daging/daun
+    function cekJawaban(pilihan) {
+      const feedback = document.getElementById("feedback-kuis");
+        feedback.textContent = pilihan === 'C' ? "Benar! Ada 3 daging." : "Salah, coba lagi ya!";
+        feedback.style.color = pilihan === 'C' ? "#16a34a" : "#dc2626";
+    }
+    function jawaban(status, idTarget = 'feedback-makanan') {
+  const feedback = document.getElementById(idTarget);
+  const suaraBenar = document.getElementById("suara-benar");
+  const suaraSalah = document.getElementById("suara-salah");
+
+  if (status === "benar") {
+    feedback.textContent = "Hebat! Kamu benar!";
+    feedback.style.color = "#16a34a";
+    suaraBenar.currentTime = 0;
+    suaraBenar.play();
+  } else {
+    feedback.textContent = "Kurang tepat, yuk coba lagi!";
+    feedback.style.color = "#dc2626";
+    suaraSalah.currentTime = 0;
+    suaraSalah.play();
+  }
+}
+  </script>
+
+</body>
+</html>
